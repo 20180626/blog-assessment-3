@@ -4,93 +4,133 @@
 \usepackage[utf8]{inputenc}
 \pagestyle{plain}
 \setlength{\parindent}{4sp}
-\usepackage[active]{srcltx}
-\usepackage{amsmath}
+\synctex=-1
 \usepackage{setspace}
 \onehalfspacing
 
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\special{papersize=\the\paperwidth,\the\paperheight}
-
-\DeclareTextSymbolDefault{\textquotedbl}{T1}
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
 
 \makeatother
 
 \usepackage{babel}
 \begin{document}
-\title{\textbf{\textquotedbl Trust but Verify\textquotedbl : Addressing The
-Risks of Cyber-Physical Systems}}
-\author{Group 4}
-\date{\noindent \emph{Date}}
+
+\title{\textbf{"Who Watches the Watchmen?" A Critical
+Analysis of British Standards Concerning Security and Trust in Cyber--Physical
+Systems}}
+\author{\textbf{Group 4}}
+\date{\emph{\small{\today}}}
+
 \maketitle
-\begin{onehalfspace}
+\begin{quote}
+\emph{Trust, but verify.} \\
+Russian proverb
+\end{quote}
 
-\section{Looking at BS 10754-1:2018, how does the proposed governance approach
-classify and manage risk to ensure systems trustworthiness? Discuss
-this with reference to cyber-physical systems as addressed in Session
-5}
-\end{onehalfspace}
-\begin{enumerate}
-\item Governance
-\item Risk
-\item Controls
-\item Compliance
-\end{enumerate}
-Information asymmetry between CPS operators and general public
+\section*{Introduction}
 
-Principle-agent problem - public-private partnerships
+[placeholder-text]
 
-Mismorphism
+\subsection*{Terminology}
 
-\section{Review the risk assessment techniques proposed in IEC 31010:2019,
-Sections 6.3-6.6 and Annex B. Select two techniques from Annex B,
-summarise them and discuss their relevance, benefits and limitations. }
+It is important when discussing any kind of security to clarify terminology.
+Cybersecurity possesses a unique and extensive nomenclature and to
+ensure the accessibility of this blog post, we will be using it minimally.
+However, two core concepts for cybersecurity, trust and composition,
+are crucial to define for the context of this piece.
+\begin{itemize}
+\item \textbf{Trust} -- The sociological definition of trust, which has
+been widely adopted by the cybersecurity community, is the reliance
+on an entity to behave as expected, despite its capacity to defy those
+expectations. In the context of this blog post, if a cyber--physical
+system were to behave as expected, only expected kinds of processing
+or computation would occur. We consider this definition sound and
+congruent with the topic of this blog post.
+\item \textbf{Composition} -- Composition is the primary engineering approach
+to construct complex systems by composing preexisting components in
+layered designs. While the properties of individual components may
+be known and understood, the same properties of a combined system
+may be more difficult to ascertain, potentially resulting in unexpected
+behaviours.
+\end{itemize}
 
-\subsection*{Bayesian Analysis}
+\part{BS 10754--1:2018 or: How The British Standards Institution Learned
+to Stop Worrying and Copy NIST's Homework}
 
-It is common to encounter problems where there is both data and subjective
-information. Bayesian analysis enables both types of information to
-be used in making decisions. Bayesian analysis is based on a theorem
-attributed to Reverend Thomas Bayes (1760). At its simplest, Bayes's
-theorem provides a probabilistic basis for changing one's opinion
-in the light of new evidence.
-\begin{figure}
-\textbf{\caption{Bayes Theorem}
-}
+The Cybersecurity Framework 1.0 published by the US Department of Commerce's National Institute of Standards and Technology (NIST) is internationally recognised as the benchmark standard for establishing effective cybersecurity policies, across both the public and private sectors. Originally published in February 2014, the framework categorises cybersecurity risk assessment and management under five broad functions: identify, protect, detect, respond andrecover. A revised version of the publication, the NIST Cybersecurity Framework 1.1 was published in April 2018, shortly after the publication of the Information Technology--Systems Trustworthiness Part 1: Governance and Management Specification document (BS 10754--1:2018) by the British Standards Institution (BSI) in February 2018. Despite the 218 GBP price tag to purchase BS 10754--1:2018 in comparison to the freely available NIST Cybersecurity Framework 1.1, the similarities between the two documents bear remarkable resemblance. In light of this, the following blog post will observe the commonalities between the two documents while critically assessing the risk assessment and management approach of BS 01754--1:2018, in the context of the security use case of cyber--physical systems. \\
 
-\texttt{
-\[
-P(A|B)=\dfrac{P(B|A)P(A)}{P(B)}
-\]
-}
-\end{figure}
+BS 10754--1:2018 categorises risk assessment as "Understanding
+general risks" and "Understanding trustworthiness
+risks", though one may argue these are one and the same
+in the context of cybersecurity. The first section, "Understanding
+general risks", outlines the steps necessary to critically
+assess the composition of system architectures, which is consistent
+with the preliminary steps of a security engineer's workflow and the
+NIST Cybersecurity Framework (subsection ID.RA) and the NIST Security
+and Privacy Controls for Federal Information Systems and Organizations
+Special Publication (NIST SP 800--53 Rev. 4). To "assess the risk to trustworthiness", identifying and enumerating assets and their threats and vulnerabilities, which collectively manifest risks for systems, are asserted as sound methodology. This is consistent with the "Identify" section of the NIST Cybersecurity Framework, specifically subsections ID.AM, ID.R--3 and ID.R--1, respectively. The techniques listed to understand "general risks" may be considered vague and lacking technical specificity, which one may infer as indicating a lack of critical engagement with stakeholders from the technical community when developing the document. \\
 
-\textbackslash{}
+The second section, "Understanding trustworthiness risks",
+outlines a rudimentary threat intelligence framework to identify threats
+and vulnerabilities, utilising common cybersecurity resources such
+as the Common Weakness Enumeration (CWE) and Common Attack Pattern
+Enumeration and Classification (CAPEC) databases, in addition to the
+Common Vulnerability Scoring System (CVSS). While these databases
+are undeniably important resources in a security engineer's intelligence--gathering
+arsenal, this might be described as a "minimum viable
+framework" for threat intelligence, excluding common
+intelligence--gathering methods frequently utilised by security engineers,
+such as monitoring activity on darkweb forums and internet relay chat
+(IRC) channels, which serve as bastions for cyber threat actors. Additionally,
+in the context of cyber--physical systems, monitoring and analysing
+data collected from the Shodan search engine for internet--connected
+devices and the United States Department of Commerce's Centre for
+Applied Internet Data Analysis (CAIDA) network telescope is common
+practice for threat intelligence concerning Internet of Things (IoT),
+cyber--physical systems and industrial--control systems, which is
+not included in the document, further indicating a lack of critical
+stakeholder engagement. Again, all of the proposed steps are consistent
+with the NIST Cybersecurity Framework (subsection ID.RA--2) and NIST
+SP 800--53 Rev. 4. 
 
-\subsection*{Game Theory}
+\subsection*{[risk-management]}
 
-Game theory is a means to model the consequences of different possible
-decisions given a number of possible future situations. The future
-situations can be determined by a different decision maker (e.g. a
-competitor) or by an external event, such as success or failure of
-a technology or a test. For example, assume the task is to determine
-the price of a product taking into account the different decisions
-that could be made by different decision makers (called players) at
-different times. The payoff for each player involved in the game,
-relevant to the time period concerned, can be calculated and the strategy
-with the optimum payoff for each player selected. Game theory can
-also be used to determine the value of information about the other
-player or the different possible outcomes (e.g. success of a technology).
-There are different types of games, for example cooperative/non--cooperative,
-symmetric/asymmetric, zero-sum/non-zero-sum, simultaneous/sequential,
-perfect information and imperfect information, combinatorial games,
-stochastic outcomes.
+{[}placeholder-text{]}
 
-TRUST BUT VERIFY
-\begin{thebibliography}{1}
-\bibitem{key-1}
-\end{thebibliography}
+\subsection*{[conclusion]}
+
+On the balance of evidence, we assert that BS 10754--1:2018 provides
+little, if any, meaningful value over and above the NIST Cybersecurity
+Framework 1.1, of which it appears largely derivative. Its content
+clearly reflects lack of critical engagement with stakeholders, particularly
+those from the technical community. Although it is intended as a high--level
+document, its recommendations are generally reductive and lack technical
+specificity to such a degree that it almost invalidates the document's
+credibility. As such, we find BS 10754--1:2018 to be inadequate to
+provide effective recommendations for ensuring the trustworthiness
+of information and communication technology systems, including cyber--physical
+systems. 
+
+\part{Risk management -- Risk assessment techniques (IEC 31010:2019)}
+
+In this part, we will critically analyse two risk assessment methods
+proposed in the Risk Management -- Risk Assessment Techniques standard
+(IEC 31010:2019), published by the International Organization for
+Standardization (ISO) Risk Management Technical Committee (ISO/TC
+262) in June 2019. In congruence with the topic of this piece, we
+have selected \textbf{[method1]} and \textbf{[method2]}and
+we will assess their salience, benefits and limitations.
+
+\subsection*{[method1]}
+
+[placeholder-text]
+
+\subsection*{[method2]}
+
+[placeholder-text]
 
 \end{document}
